@@ -3,9 +3,12 @@ const bcrypt = require('bcryptjs')
 
 const tokenBuilder = require('./token-builder')
 
-const { validatePost } = require('../middleware/check-payload')
+const { 
+  validatePost, 
+  checkUsernameExists,
+  checkUsernameDoesNotExist } = require('../middleware/check-payload')
 
-router.post('/register', validatePost, (req, res) => {
+router.post('/register', validatePost, checkUsernameExists, (req, res) => {
   res.end('implement register, please!')
   /*
     IMPLEMENT
@@ -34,7 +37,7 @@ router.post('/register', validatePost, (req, res) => {
   */
 });
 
-router.post('/login', validatePost, (req, res) => {
+router.post('/login', validatePost, checkUsernameDoesNotExist, (req, res) => {
   res.end('implement login, please!')
   /*
     IMPLEMENT
