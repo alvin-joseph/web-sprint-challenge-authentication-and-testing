@@ -16,5 +16,4 @@ module.exports = function (user) {
         JWT_SECRET,
         options,
     )
-    //in order to sign token you need secret
 }
