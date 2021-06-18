@@ -5,4 +5,15 @@ function findBy(filter) {
       .orderBy('id')
 }
 
-module.exports = { findBy }
+function findById(id) {
+  return db("users")
+    .where("id", id)
+    .orderBy('id').first()
+}
+
+async function add(user) {
+  const [id] = await db("users").insert(user)
+  return findById(id)
+}
+
+module.exports = { findBy, add }
