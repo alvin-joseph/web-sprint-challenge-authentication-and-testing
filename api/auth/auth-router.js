@@ -1,7 +1,12 @@
-const router = require('express').Router();
+const router = require('express').Router()
+const bcrypt = require('bcryptjs')
 
-router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+const tokenBuilder = require('./token-builder')
+
+const { validatePost } = require('../middleware/check-payload')
+
+router.post('/register', validatePost, (req, res) => {
+  res.end('implement register, please!')
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -29,8 +34,8 @@ router.post('/register', (req, res) => {
   */
 });
 
-router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+router.post('/login', validatePost, (req, res) => {
+  res.end('implement login, please!')
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -56,4 +61,4 @@ router.post('/login', (req, res) => {
   */
 });
 
-module.exports = router;
+module.exports = router
